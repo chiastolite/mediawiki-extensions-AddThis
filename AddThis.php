@@ -130,59 +130,12 @@ $wgAddThisBackground = '#f6f6f6';
 $wgAddThisBorder = '#a7d7f9';
 $wgAddThisSidebar = true;
 $wgAddThisHeader = true;
+$wgAddThisFooter = true;
 $wgAddThisMain = true;
 $wgAddThis = [
 	'addressbarsharing' => false,
 ];
 
-# Sidebar settings
-$wgAddThisSBServ = [
-	[
-		'service' => 'compact',
-	],
-	[
-		'service' => 'facebook',
-	],
-	[
-		'service' => 'twitter',
-	],
-	[
-		'service' => 'google_plusone',
-		'attribs' => 'g:plusone:count="false" style="margin-top:1px;"',
-	],
-	[
-		'service' => 'email',
-	],
-];
-
-# Toolbar settings
-$wgAddThisHServ = [
-	[
-		'service' => 'facebook',
-	],
-	[
-		'service' => 'twitter',
-	],
-	[
-		'service' => 'google_plusone',
-		'attribs' => 'g:plusone:count="false" style="margin-top:1px;"',
-	],
-	[
-		'service' => 'linkedin',
-	],
-	[
-		'service' => 'tumblr',
-	],
-	[
-		'service' => 'stumbleupon',
-	],
-	[
-		'service' => 'reddit',
-	],
-	[
-		'service' => 'email',
-	],
-];
 
 $wgExtensionCredits['other'][] = [
 	'path' => __FILE__,
@@ -198,11 +151,13 @@ $wgAutoloadClasses['AddThis'] = __DIR__ . '/AddThis.body.php';
 $wgMessagesDirs['AddThis'] = __DIR__ . '/i18n';
 
 $wgResourceModules['ext.addThis'] = [
+	'position' => 'top',
 	'styles' => 'addThis.css',
 	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'AddThis',
 ];
 
 $wgHooks['ArticleViewHeader'][] = 'AddThis::AddThisHeader';
+$wgHooks['ArticleViewFooter'][] = 'AddThis::AddThisFooter';
 $wgHooks['ParserFirstCallInit'][] = 'AddThis::AddThisHeaderTag';
 $wgHooks['SkinBuildSidebar'][] = 'AddThis::AddThisSidebar';
